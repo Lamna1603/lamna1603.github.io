@@ -9,9 +9,9 @@
     display: inline-block;
 } */
 .container{
-    max-width: 1280px;
+    max-width: 1024px;
     width: 100%;
-    margin-inline:24px;
+    margin-inline:auto;
 }
 
 header{
@@ -30,6 +30,8 @@ button{
 table{
     width: 100%;
     text-align: left;
+    table-layout: fixed;
+
 }
 
 .tag{
@@ -48,9 +50,13 @@ table{
     height: 30px;
 }
 
+.name_logo__name{
+    font-weight: 500;
+}
+
 .social{
     display: inline-block;
-    margin-left: 80%;
+    margin-left: 75%;
     
 }
 .social > span {
@@ -99,12 +105,12 @@ vertical-align: top;
 
 .inf table{
     margin-top: 10%;
+    width: 75%;
 }
 
 .inf table th{
     color: #d21e5d;
     font-weight: 900;
-    width: 30%;
 }
 /* end section1 */
 
@@ -112,7 +118,7 @@ vertical-align: top;
 
 
 .button_download {
-    margin: 40px 0;
+    margin: 40px 40px;
     display: flex;
 justify-content: center;
 align-items: center;
@@ -128,6 +134,22 @@ align-items: center;
 /* end section2 */
 
 /* section3_skill */
-.skill th,td{
-    width: 50%;
+.skills{
+    margin: 50px 0;
+}
+/* end section3 */
+
+/* section4_work_experience */
+.Work_experience tr{
+    height: 30px;
+}
+
+.Work_experience tr:nth-child(2){
+ font-weight: 600;
+}
+
+.Work_experience tr:nth-child(3){
+    font-size: 35px;
+    font-weight: 200;
+
 }
