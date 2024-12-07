@@ -1,0 +1,18 @@
+.color_green{
+    color: green;
+}
+.color_red{
+    color: red;
+}
+.bg_black{
+    background-color: black;
+}
+.bg_purple{
+    background-color: purple;
+}
+.font{
+    font-family: sans-serif;
+}
+ul > lii{
+    background-color: red;
+}
