@@ -37,7 +37,7 @@ table{
 .tag{
     display: inline-block;
     border-bottom: 3px solid #d21e5d;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .name_logo__logo{
@@ -139,17 +139,36 @@ align-items: center;
 }
 /* end section3 */
 
+
 /* section4_work_experience */
 .Work_experience tr{
-    height: 30px;
+    vertical-align: top;
 }
 
-.Work_experience tr:nth-child(2){
- font-weight: 600;
+
+
+.Work_experience .main{
+    border-spacing: 5px;
+    border-collapse: separate;
 }
 
-.Work_experience tr:nth-child(3){
-    font-size: 35px;
-    font-weight: 200;
 
+.Work_experience .main tr:nth-child(2){
+    font-weight: 600;
+}
+
+.Work_experience .main tr:nth-child(3){
+    font-size: 25px;
+    font-weight: 200; 
+}
+
+.Work_experience .detail{
+    border-spacing:0 25px  ;
+    border-collapse: separate;
+    padding-right: 5px;
+    
+}
+
+.Work_experience ul{
+    list-style-position: inside
 }
