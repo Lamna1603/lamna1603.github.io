@@ -1,0 +1,136 @@
+
+
+
+.container{
+    max-width: 1024px;
+    margin-inline: auto;
+    font-family: "Montserrat",sans-serif;
+}
+
+/* header */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 35px;
+}
+
+.name_logo_logo{
+    display: inline-block;
+    background-color: black;
+    width:30px ;
+    height: 30px;
+    text-align: center;
+    align-content: center;
+    color: white;
+}
+.name_logo_name{
+    font-weight: 500;
+}
+
+.social{
+    display: flex;
+}
+
+.social > span{
+    position: relative;
+    margin-left: 8px;
+    font-size: 25px;
+    display: flex;
+    padding: 0 4px;
+    background-color: #d21e5d;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.bk{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+    margin-left: 1px;
+    background-color:white;
+    z-index: -1;
+}
+
+.social > a{
+    background-color:black;
+}
+/* end header */
+
+/* sortInfor */
+
+.sortInfor{
+    display: flex;
+    margin: 30px 0;
+}
+
+.sortInfor_img{
+    width: 40%;
+}
+.sortInfor_infor{
+    margin-left: 8%;
+    width: 50%;
+}
+
+.hithere{
+    margin-top: 7%;
+}
+
+.content{
+    margin-top: 15%;
+    font-weight: 600;
+    font-size: 30px
+}
+
+.index{
+    display:flex ;
+    justify-content: space-between;
+    margin-top: 20%;
+}
+
+.index > span > p:nth-child(1){
+    font-weight:900 ;
+    font-size: large;
+    color: #d21e5d;
+}
+/* end_sortinfor */
+
+/* about_me */
+.download{
+    display: flex;
+justify-content: center;
+}
+.button_download {
+    background-color:white;
+    padding: 10px;
+    border: 2px solid #d21e5d;
+    border-radius: 30px;
+    color: #d21e5d;
+    margin-inline: auto;
+    margin: 30px 0;
+}
+/* end_about_me */
+
+/* skills */
+
+/* end skills */
+
+/* experience */
+.work_experience{
+    display: flex;
+}
+.work_experience_detail .time,.position{
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.work_experience_detail .thin{
+    font-size: 30px;
+    font-weight: 200;
+    margin: 10px 0;
+}
+.work_experience_detail .detail  p,li{
+    margin: 30px 0;
+}

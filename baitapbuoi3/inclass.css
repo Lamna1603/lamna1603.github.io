@@ -1,0 +1,54 @@
+*{
+    border-radius: 15px;
+}
+
+.parent1{
+    
+    background: rgb(118, 212, 118);
+    width: 400px;
+    height: 400px;
+    display: flex;
+    margin-bottom: 50px;
+    /* align-items: center;
+    justify-content:space-between ;
+    flex-direction: column; */
+}
+.child1{
+    background: rgb(218, 97, 97);
+    width: 50px;
+    height: 50px;
+    justify-self:center ;
+    align-self: center;
+    justify-self:center;
+    margin: auto;
+}
+
+.parent2{
+    margin-top: 50px;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    background: rgb(150, 236, 150);
+    align-items: center;
+}
+.parent2 div{
+    display: flex;
+    width: 65%;
+    height: 50%;
+    align-items: center;
+
+}
+
+.parent2,.parent2_2{
+justify-content: end;
+}
+
+.parent2_1{
+    background: rgb(241, 190, 199);
+}
+.parent2_2{
+    background: rgb(99, 134, 233);
+}
+.parent2_3{
+    background:rgb(234, 234, 96);
+}
