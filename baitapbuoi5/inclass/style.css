@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+}
+
+.navbar{
+    position: fixed;
+    height: 100vh;
+    width: 20%;
+    background: burlywood;
+}
+.header{
+    background-color: aquamarine;
+    height: 30px;
+    position: fixed;
+    margin-left: 20%;
+    width: 100%;
+}
+.content{
+    background-color: aqua;
+    position: fixed;
+    bottom: 0;
+    margin-left: 20%;
+}
