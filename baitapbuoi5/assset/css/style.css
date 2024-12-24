@@ -556,8 +556,8 @@ main .main_header_detail {
     left: 10px;
 }
 .album_artist .img{
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     overflow: hidden;
 }
 .album_artist .inf{
