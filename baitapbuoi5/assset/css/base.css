@@ -41,9 +41,6 @@ img{
     width: 10px; /* Chiều rộng thanh cuộn */
 }
 
-::-webkit-scrollbar-track {
-    /* Màu nền */
-}
 
 ::-webkit-scrollbar-thumb {
     background-color:var(--color4); /* Màu thanh cuộn */
@@ -105,3 +102,32 @@ footer  button{
     overflow: auto;
     padding-right: 0;
 }
+
+input[type='range'] {
+    overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none;
+    background-color: var(--color3);
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: var(--color3);
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background:var(--color1);
+    box-shadow: -800px 0 0 800px var(--color1);
+  }
+  input[type='range']:hover::-webkit-slider-thumb {
+    background:var(--color1);
+    box-shadow: -800px 0 0 800px #25bd14;  }
+
+
+  
