@@ -1,0 +1,8 @@
+1;margin collapse
+margin collapse is for bottom and top; not for felt and right
+
+2;flex skrink
+The flex-shrink property specifies how the item will shrink relative to the rest of the flexible items inside the same container.
+
+Note: If the element is not a flexible item, the flex-shrink property has no effect.
+

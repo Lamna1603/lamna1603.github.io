@@ -1,57 +1,61 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Patrick+Hand&family=Patrick+Hand+SC&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
 
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family:"Montserrat",serif;
+    font-family: "Montserrat", serif;
 
 }
 
-:root{
-    --color1:#fff;
-    --color2:#000;
-    --color3:#b3b3b3;
-    --color4:#2a2a2a;
-    --color5:#1f1f1f;
-    --color6:#ffffff1a;
-    --color7:#121212;
+:root {
+    --color1: #fff;
+    --color2: #000;
+    --color3: #b3b3b3;
+    --color4: #2a2a2a;
+    --color5: #1f1f1f;
+    --color6: #ffffff1a;
+    --color7: #121212;
 }
 
-.center i{
+.center i {
     font-size: 25px;
 
 }
 
-body{
+body {
     margin: 8px 10px 0 10px;
-    background-color:var(--color2);
+    background-color: var(--color2);
     box-sizing: border-box;
 }
 
-img{
+img {
     width: 100%;
     object-fit: contain;
 }
 
 
 ::-webkit-scrollbar {
-    width: 10px; /* Chiều rộng thanh cuộn */
+    width: 10px;
+    /* Chiều rộng thanh cuộn */
 }
 
 
 ::-webkit-scrollbar-thumb {
-    background-color:var(--color4); /* Màu thanh cuộn */
-    border-radius: 0px; 
-}
-::-webkit-scrollbar-thumb:hover {
-    background-color:var(--color3); /* Màu thanh cuộn */
-    border-radius: 0px; /* Góc bo tròn */
+    background-color: var(--color4);
+    /* Màu thanh cuộn */
+    border-radius: 0px;
 }
 
-footer  button{
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color3);
+    /* Màu thanh cuộn */
+    border-radius: 0px;
+    /* Góc bo tròn */
+}
+
+footer button {
     background-color: var(--color2);
     border: 0px;
     color: var(--color3);
@@ -65,28 +69,29 @@ footer  button{
     border: 0;
 }
 
-.img{
+.img {
     height: 100%;
     object-fit: contain;
 }
 
-.title{
+.title {
     font-size: 17px;
-    font-weight:700 ;
+    font-weight: 700;
     color: var(--color1);
 }
 
-.show_all{
+.show_all {
     position: absolute;
     right: 15px;
     top: 10px;
-    font-size:small ;
+    font-size: small;
 }
 
-.play_list img{
+.play_list img {
     height: 100%;
 }
-.playing_album .picture img{
+
+.playing_album .picture img {
     border-radius: 8px;
 }
 
@@ -94,11 +99,12 @@ footer  button{
     font-size: x-small;
 }
 
-.parent_scroll{
+.parent_scroll {
     overflow: hidden;
     padding-right: 10px;
 }
-.parent_scroll:hover{
+
+.parent_scroll:hover {
     overflow: auto;
     padding-right: 0;
 }
@@ -108,26 +114,25 @@ input[type='range'] {
     width: 80px;
     -webkit-appearance: none;
     background-color: var(--color3);
-  }
-  
-  input[type='range']::-webkit-slider-runnable-track {
+}
+
+input[type='range']::-webkit-slider-runnable-track {
     height: 10px;
     -webkit-appearance: none;
     color: var(--color3);
     margin-top: -1px;
-  }
-  
-  input[type='range']::-webkit-slider-thumb {
+}
+
+input[type='range']::-webkit-slider-thumb {
     width: 10px;
     -webkit-appearance: none;
     height: 10px;
     cursor: ew-resize;
-    background:var(--color1);
+    background: var(--color1);
     box-shadow: -800px 0 0 800px var(--color1);
-  }
-  input[type='range']:hover::-webkit-slider-thumb {
-    background:var(--color1);
-    box-shadow: -800px 0 0 800px #25bd14;  }
+}
 
-
-  
+input[type='range']:hover::-webkit-slider-thumb {
+    background: var(--color1);
+    box-shadow: -800px 0 0 800px #25bd14;
+}
