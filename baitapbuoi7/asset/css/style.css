@@ -1,0 +1,25 @@
+/* <div class="contact">
+        <div class="inputs">
+            <input type="text" placeholder="Vui long nhap ma mau">
+            <input type="text" placeholder="Vui long nhap chieu ngang(px)">
+            <input type="text" placeholder="Vui long nhap chieu cao(px)">
+        </div>
+
+        <button class="button">
+            Submit
+        </button>
+    </div> */
+
+.contact{
+    display: flex;
+    gap: 5px;
+    margin: 10px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.result{
+    margin: 10px;
+}
