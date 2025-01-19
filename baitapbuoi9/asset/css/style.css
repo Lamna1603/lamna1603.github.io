@@ -1,3 +1,5 @@
+
+
 .header-wrap {
     flex-direction: column;
     align-items: center;
@@ -25,11 +27,132 @@
     transition: all .2s ease;
 }
 
-/* .pokemon-card {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    margin: 10px;
+input:focus {
+    border: 1px solid black; /* Màu xanh lá khi tập trung */
+    outline: none; /* Xóa viền mặc định của trình duyệt */
+  }
+
+.col-full {
+    display: flex;
+    padding-top: 50px;
+    width: 100%;
     text-align: center;
-    display: inline-block;
-  } */
+    justify-content: center;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 20px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff4d4f;
+    transition: all .25s cubic-bezier(.02,.01,.47,1);
+    -webkit-transition: all .25s cubic-bezier(.02,.01,.47,1);
+}
+
+.btn:hover {
+    background-color: #ff7875
+}
+
+.btn:active {
+    background-color: #d9363e
+}
+
+.img {
+    padding-top: 100%;
+    background-size: contain;
+}
+
+
+
+.type {
+    padding: 3px 4px;
+    border-radius: 5px;
+    margin: 0 3px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: capitalize;
+    box-shadow: #0000000d 0 6px 24px,#00000014 0 0 0 1px
+}
+
+.normal {
+    background-color: #a8a77a
+}
+
+.fighting {
+    background-color: #c22e28
+}
+
+.flying {
+    background-color: #a98ff3
+}
+
+.poison {
+    background-color: #a33ea1
+}
+
+.ground {
+    background-color: #e2bf65
+}
+
+.rock {
+    background-color: #b6a136
+}
+
+.bug{
+    background-color: #a6b91a
+}
+
+.ghost {
+    background-color: #735797
+}
+
+.steel {
+    background-color: #b7b7ce
+}
+
+.fire {
+    background-color: #ff421c
+}
+
+.water{
+    background-color: #6390f0
+}
+
+.grass {
+    background-color: #78cd54
+}
+
+.electric{
+    background-color: #f7d02c
+}
+
+.psychic {
+    background-color: #f95587
+}
+
+.ice {
+    background-color: #96d9d6
+}
+
+.dragon {
+    background-color: #6f35fc
+}
+
+.dark {
+    background-color: #705746
+}
+
+.fairy {
+    background-color: #d685ad
+}
+
+.unknow {
+    background-color: #68a090
+}
+
+.shadow {
+    background-color: #735797
+}

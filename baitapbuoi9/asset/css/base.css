@@ -27,14 +27,20 @@ flex-basis: calc(var(--width) - calc(var(--offset)));
 text-align: center;
 margin: 0 calc(var(--offset) / 2);
 margin-bottom: var(--offset);
+padding: 10px;
 border-radius: 15px;
 box-shadow: #0000001a 0 4px 12px;
--webkit-transition: all .25s cubic-bezier(.02,.01,.47,1);
 transition: all .25s cubic-bezier(.02,.01,.47,1);
--webkit-transform: translate3d(0, 0, 0);
 transform: translateZ(0);
+cursor: pointer;
+
 }
 
+.pokemon-card:hover{
+    box-shadow: 0 5px 11px rgba(0, 0, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.1),
+                -5px 0 10px rgba(0, 0, 0, 0.1), 5px 0 10px rgba(0, 0, 0, 0.1);
+
+}
 @media (min-width: 768px) {
     .pokemon-card {
         --width: 33.33%;
