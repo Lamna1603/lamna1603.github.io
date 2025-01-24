@@ -9,43 +9,43 @@
 
 .box1{
     grid-area: 1/1/9/17;
-    background-color: #6f42c1;
+    background-color: #6500F4;
 }
 .box2{
     grid-area: 1/17/17/33;
-    background-color: rgb(196, 196, 89);
+    background-color: #FDD350;
 }
 .box3{
     grid-area: 9/1/13/9;
-    background-color: aqua;
+    background-color: #00E3EA;
 }
 .box4{
     grid-area: 9/9/17/17;
-    background-color: red;
+    background-color: #EE0314;
 }
 .box5{
     grid-area: 13/1/15/5;
-    background-color: rgb(196, 196, 89);
+    background-color: #FDD54D;
 }
 .box6{
     grid-area: 13/5/17/9;
-    background-color: green;
+    background-color: #00B852;
 }
 .box7{
     grid-area: 15/1/16/3;
-    background-color: black;
+    background-color: #312D29;
 }
 .box8{
     grid-area: 15/3/17/5;
-    background-color: #6f42c1;
+    background-color: #6500F5;
 }
 .box9{
     grid-area: 16/1/17/2;
-    background-color: rgb(196, 196, 89);
+    background-color: #FDD350;
 }
 .box10{
     grid-area: 16/2/17/3;
-    background-color: red;
+    background-color: #EE0314;
 }
 
 @media only screen and (max-width: 600px){
