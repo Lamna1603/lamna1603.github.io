@@ -336,6 +336,12 @@
         -ms-transition: all 0.25s ease-in-out;
         -o-transition: all 0.25s ease-in-out;
         transition: all 0.25s ease-in-out;
+
+        
+    }
+
+    img.partners:hover {
+        opacity: 0.8;
     }
 
 }
@@ -381,6 +387,11 @@
                     padding: 0 10px;
                     margin-bottom: 15px;
                 }
+
+            }
+            .main-services:hover {
+                transform: scale(1.025);
+                transition: all 1s;
             }
 
             .main-services i {
@@ -457,7 +468,7 @@
 
             .nav-pills {
 
-                .nav-link.active {
+                .nav-link.active,  .show > .nav-link{
                     color: #fff;
                     background-color: #fff;
                     border: 1px solid #f4f5f6 !important;
@@ -474,6 +485,16 @@
                     display: block;
                     padding: .5rem 1rem;
 
+                }
+                .nav-link:hover {
+                    color: #fff;
+                    background-color: #fff;
+                    border: none !important;
+                    border-radius: 8px !important;
+                    box-shadow: 0 12px 55px 0 rgba(0, 0, 0, .05) !important;
+                    -moz-box-shadow: 0 12px 55px 0 rgba(0, 0, 0, .05) !important;
+                    -webkit-box-shadow: 0 12px 55px 0 rgba(0, 0, 0, .05) !important;
+                    transition: all 1s;
                 }
 
                 .features-second {
@@ -522,6 +543,24 @@
                     }
                 }
             }
+
+            .tab-content>.tab-pane {
+                display: none;
+            }
+
+            .tab-content>.active {
+                display: block;
+            }
+
+            .fade:not(.show) {
+                opacity: 0;
+            }
+
+            .fade {
+                transition: opacity .15s linear;
+            }
+
+            
         }
     }
 }
@@ -734,6 +773,7 @@
         animation-name: fadeIn;
     }
 
+    
     .gallery-insta {
         margin: 0 !important;
 
@@ -784,6 +824,14 @@
             .fa-search-plus:before {
                 content: "\f00e";
             }
+
+            a:hover span {
+                opacity: 0.7;
+            }
+        }
+
+        .popup-gallery:hover img {
+            opacity: 0.25;
         }
     }
 
@@ -977,6 +1025,8 @@
         }
     }
 
+    .price-box-grey:hover, .price-box-white:hover {
+        transform: scale(1.03, 1.03);}
     .pricing-list {
 
 
@@ -1020,6 +1070,12 @@
             -webkit-transition: all 0.3s ease-in-out;
         }
 
+        li.price-tag a:hover {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
         li.price-text {
             font-family: 'Open Sans', sans-serif;
             font-size: 16px;
@@ -1029,6 +1085,8 @@
         }
 
     }
+
+
 }
 
 .section-white#faq {
@@ -1153,6 +1211,11 @@
                 -moz-transition: all .50s ease-in-out;
                 -webkit-transition: all .50s ease-in-out;
             }
+
+            input.contact-submit:hover {
+                background: #eaeaea;
+                transition: all .50s ease-in-out;
+            }
         }
     }
 }
@@ -1197,7 +1260,9 @@
                 -moz-transition: all .25s ease-in-out;
                 -webkit-transition: all .25s ease-in-out;
             }
-
+            i:hover {
+                color: #e52f37 !important;
+            }
             i.fa-twitter {
                 color: #4099ff;
             }
