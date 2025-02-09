@@ -296,6 +296,12 @@ textarea {
 
 /*  */
 
+@media (min-width: 75px){
+    .card-header h5 .btn-link p span {
+        display: block;
+        white-space: wrap;        
+    }
+}
 @media (min-width: 375px) {
     .container {
         max-width: 350px;
@@ -313,6 +319,8 @@ textarea {
     }
     .card-header h5 .btn-link p span {
         display: block;
+        white-space: nowrap;        
+
         
     }
     .navbar-fixed-top .navbar-nav > li.discover-link {
@@ -480,7 +488,7 @@ textarea {
         margin-top: 0px;
     }
     .card-header h5 .btn-link p span {
-        display: inline;
+        display: inline-block;
         
     }
 }
