@@ -89,7 +89,6 @@ img {
 }
 
 .align-items-center {
-    -ms-flex-align: center !important;
     align-items: center !important;
 }
 
@@ -283,14 +282,44 @@ textarea {
 /* //animation */
 .fadeIn {
     animation-name: fadeIn;
+    animation-duration: 3s;
 }
 
 .bounceIn {
     animation-name: bounceIn;
+    animation-duration: 1.5s;
 }
 
+.slideInLeft {
+    animation-name: slideInLeft ;
+}
 
 /*  */
+
+@media (min-width: 375px) {
+    .container {
+        max-width: 350px;
+        flex-wrap: wrap;
+
+    }
+    .navbar-nav {
+
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+
+    }
+    .card-header h5 .btn-link p span {
+        display: block;
+        font-size: 14px;
+    }
+    .navbar-fixed-top .navbar-nav > li.discover-link {
+        margin-top: 10px;
+    }
+}
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -304,10 +333,38 @@ textarea {
         max-width: 100%;
     }
 
+    .navbar-nav {
+
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+
+    }
+
     .col-sm-6 {
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
         max-width: 50%;
+    }
+
+    
+    
+    .navbar-fixed-top .navbar-nav > li.discover-link {
+        margin-top: 10px;
+    }
+
+
+
+}
+
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        flex-wrap: wrap;
+
     }
 
     .navbar-nav {
@@ -319,29 +376,6 @@ textarea {
         list-style: none;
 
     }
-    .navbar-collapse {
-        flex-basis: 100%;
-        flex-grow: 1;
-        align-items: center;
-    }
-    .navbar-fixed-top .navbar-nav > li.discover-link {
-        margin-top: 10px;
-    }
-
-
-
-}
-
-
-
-
-@media (min-width: 768px) {
-    .container {
-        max-width: 720px;
-        flex-wrap: wrap;
-
-    }
-
     .offset-md-1 {
         margin-left: 8.333333%;
     }
@@ -351,7 +385,7 @@ textarea {
     }
 
     .justify-content-md-center {
-        -ms-flex-pack: center !important;
+        /* -ms-flex-pack: center !important; */
         justify-content: center !important;
     }
 

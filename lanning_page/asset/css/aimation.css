@@ -1,6 +1,6 @@
 @keyframes doublePulsation {
     0% {
-        -webkit-transform: scale(1.0, 1.0);
+        transform: scale(1.0, 1.0);
         opacity: 0.0;
     }
 
@@ -9,7 +9,7 @@
     }
 
     100% {
-        -webkit-transform: scale(1.3, 1.3);
+        transform: scale(1.3, 1.3);
         opacity: 0.0;
     }
 }
@@ -25,20 +25,37 @@
         transform: translateX(0);
     }
 }
+
 @keyframes bounceIn {
 
-0% {
-    opacity: 0;
-    transform: scale(.3);
+    0% {
+        opacity: 0;
+        transform: scale(.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform: scale(.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-50% {
-    opacity: 1;
-    transform: scale(1.05);
-}
-70% {
-    transform: scale(.9);
-}
-100% {
-    transform: scale(1);
-}
+
+@keyframes fadeIn{
+    0% {
+        opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
 }
