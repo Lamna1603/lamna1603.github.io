@@ -744,14 +744,18 @@
                         color: #071e55;
                         text-align: left !important;
                         background-color: transparent;
-
+                        white-space: wrap;
                         .testim-name {
                             display: inline-block;
                         }
 
                         span {
+                            display: block;
                             font-size: 17px;
                             color: #27b36a;
+                            
+                                white-space: wrap;
+                              
                         }
                     }
                 }
