@@ -313,7 +313,7 @@ textarea {
     }
     .card-header h5 .btn-link p span {
         display: block;
-        font-size: 14px;
+        
     }
     .navbar-fixed-top .navbar-nav > li.discover-link {
         margin-top: 10px;
@@ -326,7 +326,7 @@ textarea {
         flex-wrap: wrap;
 
     }
-
+    
     .col-sm-12 {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
@@ -366,7 +366,7 @@ textarea {
         flex-wrap: wrap;
 
     }
-
+    
     .navbar-nav {
 
         display: flex;
@@ -452,7 +452,7 @@ textarea {
     .navbar-fixed-top .navbar-nav > li.discover-link {
         margin-top: 0px;
     }
-
+    
     .navbar-expand-lg .navbar-collapse {
         display: flex !important;
         -ms-flex-preferred-size: auto;
@@ -474,10 +474,14 @@ textarea {
     .container {
         max-width: 1140px;
         flex-wrap: nowrap;
-
+        
     }
     .navbar-fixed-top .navbar-nav > li.discover-link {
         margin-top: 0px;
+    }
+    .card-header h5 .btn-link p span {
+        display: inline;
+        
     }
 }
 
