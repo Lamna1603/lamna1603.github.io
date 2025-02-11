@@ -81,9 +81,17 @@
             return pokemon.name.includes(input.value);
         });
 
+        
+        
         container.innerHTML = "";
-        counter = 0
-        limit = 36
+        counter = 0;
+        limit = 36;
+        if (filteredPokemons.length === 0) {
+            container.innerHTML =`<p class="no-result" >No pokemon matched with <span> "${input.value}"</span></p>"`;
+            button.style.display = "none";
+            return;
+        }
+
         render();
     });
 
