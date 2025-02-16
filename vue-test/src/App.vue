@@ -1,137 +1,108 @@
 <script setup>
+import { ref, onMounted, computed } from 'vue'
+import PokemonCard from './components/PokemonCard.vue'
 
-(async function () {
-    const input = document.querySelector('input')
-    const button = document.querySelector("button");
-    const container = document.querySelector(".pokemon-container");
-    let counter = 0;
-    let limit = 36;
-    let filteredPokemons = [];
-    async function FetchAPI(URL) {
-        try {
-            const response = await fetch(URL);
-            const promise = await response.json();
-            return promise;
-        } catch (error) {
-            container.innerHTML = `<div class="error">Error: ${error}</div>`;
+const fetchAPI = async (URL) => {
+    try {
+        const response = await fetch(URL)
+
+
+        const result = await response.json()
+        return result
+    }
+    catch (error) {
+        console.log("Error in fetchAPI", error);
+
+    }
+}
+
+
+let pokemons = []
+const offset = ref(0)
+const limit = 12
+const pokemonList = ref([])
+const renderPokemons = computed(() => pokemonList.value.slice(0, offset.value + limit))
+
+const fetchPokemon = async () => {
+    const data = await fetchAPI("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=898")
+    if (data && data.results) {
+
+        for (const pokemon of data.results) {
+            const pokemonData = await fetchAPI(pokemon.url)
+            pokemonList.value.push(pokemonData)
+            pokemons.push(pokemonData)
         }
     }
+}
+// fetchPokemon()
+const loadMore = () => {
+    offset.value += limit
+}
 
-    const { results: pokemons } = await FetchAPI(
-        "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=898"
-    );
-    filteredPokemons = pokemons;
+const search = (event) => {
+    pokemonList.value = pokemons.filter((pokemon) => {
+        return pokemon.name.includes(event.target.value)
+    })
 
-    function createPromiseList() {
-        const pokePromises = [];
-        for (; counter < limit; counter++) {
-            const pokemon = filteredPokemons[counter];
-            if (!pokemon) {
-                button.style.display = "none";
-                break;
-            } else {
-                button.style.display = "block";
-            }
+    offset.value = 0
+}
 
-            const promise = FetchAPI(pokemon.url);
-            pokePromises.push(promise);
-        }
 
-        return pokePromises;
-    }
 
-    function createPokemonCard(pokemon) {
-        const pokemonCard = document.createElement("div");
-        pokemonCard.className = "pokemon-card";
-        pokemonCard.innerHTML = `
-                <p class="id" > #${pokemon.id}</p>
-                <div class="img" style =" background-image: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id
-            }.png); " ></div>
-            <h3 class="name" > ${capitalize(pokemon.name)} </h3>
-                <div class="lable" >${createPokemonType(pokemon.types)}</div>
-            `;
-        return pokemonCard;
-    }
 
-    function createPokemonType(types) {
-        return types
-            .map(function (type) {
-                return `<span class= " type ${type.type.name}"> ${type.type.name}</span> `;
-            })
-            .join("");
-    }
+onMounted(() => {
+    fetchPokemon()
+})
 
-    async function render() {
-        const pokeData = await Promise.all(createPromiseList());
 
-        pokeData.forEach(function (pokemon) {
-            const element = createPokemonCard(pokemon);
-            container.appendChild(element);
-        });
 
-        limit += 36;
-    }
 
-    container.innerHTML = "";
-    render();
-
-    button.addEventListener("click", render);
-
-    input.addEventListener("input", function () {
-        
-        filteredPokemons = pokemons.filter(function (pokemon) {
-            return pokemon.name.includes(input.value);
-        });
-
-        container.innerHTML = "";
-        counter = 0
-        limit = 36
-        render();
-    });
-
-    function capitalize(word) {
-        if (!word) return "";
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    }
-})();
 
 </script>
 
 <template>
-<div id="app">
-        <div class="container">
-            <div class="wrapper header-wrap">
-                <div class="heading">
-                    <h2>Pokemon API</h2>
-                </div>
-                <div class="search__wrap">
-                    <input class="search" type="text" placeholder="Search some Pokemon...">
-                </div>
-            </div>
 
-            <div class="wrapper pokemon-container">
-            </div>
-            
-            <div class="wrapper">
-                <div class="col-full">
-                    <button class="btn">Load More</button>
+    <div>
+
+
+        <div id="app">
+            <div class="container">
+                <div class="wrapper header-wrap">
+                    <div class="heading">
+                        <h2>Pokemon API</h2>
+                    </div>
+                    <div class="search__wrap">
+                        <input class="search" type="text" placeholder="Search some Pokemon..." @input="search">
+                    </div>
+                </div>
+
+                <div class="wrapper pokemon-container">
+                    <PokemonCard v-for="(pokemon, index) in renderPokemons" 
+                    :key="index" 
+                    :pokemon="pokemon"/>
+                </div>
+
+                <div class="wrapper">
+                    <div class="col-full">
+                        <button v-show="pokemonList.length>limit" class="btn" @click="loadMore">Load More</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <style scoped>
-
 /* base */
 
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: border-box;
     margin: 0;
     position: relative;
-    font-weight: 4000; 
+    font-weight: 4000;
     font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
@@ -146,29 +117,30 @@
 }
 
 
-.pokemon-card{
+.pokemon-card {
 
---width: 50%;
---offset: 10px;
-max-width: calc(var(--width) - calc(var(--offset)));
-flex-basis: calc(var(--width) - calc(var(--offset)));
-text-align: center;
-margin: 0 calc(var(--offset) / 2);
-margin-bottom: var(--offset);
-padding: 10px;
-border-radius: 15px;
-box-shadow: #0000001a 0 4px 12px;
-transition: all .25s cubic-bezier(.02,.01,.47,1);
-transform: translateZ(0);
-cursor: pointer;
+    --width: 50%;
+    --offset: 10px;
+    max-width: calc(var(--width) - calc(var(--offset)));
+    flex-basis: calc(var(--width) - calc(var(--offset)));
+    text-align: center;
+    margin: 0 calc(var(--offset) / 2);
+    margin-bottom: var(--offset);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: #0000001a 0 4px 12px;
+    transition: all .25s cubic-bezier(.02, .01, .47, 1);
+    transform: translateZ(0);
+    cursor: pointer;
 
 }
 
-.pokemon-card:hover{
+.pokemon-card:hover {
     box-shadow: 0 5px 11px rgba(0, 0, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.1),
-                -5px 0 10px rgba(0, 0, 0, 0.1), 5px 0 10px rgba(0, 0, 0, 0.1);
+        -5px 0 10px rgba(0, 0, 0, 0.1), 5px 0 10px rgba(0, 0, 0, 0.1);
 
 }
+
 @media (min-width: 768px) {
     .pokemon-card {
         --width: 33.33%;
@@ -183,6 +155,7 @@ cursor: pointer;
         --offset: 10px;
     }
 }
+
 @media (min-width: 1200px) {
     .pokemon-card {
         --width: 16.66%;
@@ -220,9 +193,11 @@ cursor: pointer;
 }
 
 input:focus {
-    border: 1px solid black; /* Màu xanh lá khi tập trung */
-    outline: none; /* Xóa viền mặc định của trình duyệt */
-  }
+    border: 1px solid black;
+    /* Màu xanh lá khi tập trung */
+    outline: none;
+    /* Xóa viền mặc định của trình duyệt */
+}
 
 .col-full {
     display: flex;
@@ -240,8 +215,8 @@ input:focus {
     font-size: 16px;
     color: #fff;
     background-color: #ff4d4f;
-    transition: all .25s cubic-bezier(.02,.01,.47,1);
-    -webkit-transition: all .25s cubic-bezier(.02,.01,.47,1);
+    transition: all .25s cubic-bezier(.02, .01, .47, 1);
+    -webkit-transition: all .25s cubic-bezier(.02, .01, .47, 1);
 }
 
 .btn:hover {
@@ -266,7 +241,7 @@ input:focus {
     font-size: 13px;
     font-weight: 500;
     text-transform: capitalize;
-    box-shadow: #0000000d 0 6px 24px,#00000014 0 0 0 1px
+    box-shadow: #0000000d 0 6px 24px, #00000014 0 0 0 1px
 }
 
 .normal {
@@ -293,7 +268,7 @@ input:focus {
     background-color: #b6a136
 }
 
-.bug{
+.bug {
     background-color: #a6b91a
 }
 
@@ -309,7 +284,7 @@ input:focus {
     background-color: #ff421c
 }
 
-.water{
+.water {
     background-color: #6390f0
 }
 
@@ -317,7 +292,7 @@ input:focus {
     background-color: #78cd54
 }
 
-.electric{
+.electric {
     background-color: #f7d02c
 }
 
