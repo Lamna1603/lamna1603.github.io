@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import PokemonCard from './components/PokemonCard.vue'
+import pokemonDetail from './components/pokemonDetail.vue'
+
 
 const fetchAPI = async (URL) => {
     try {
@@ -22,6 +24,7 @@ const offset = ref(0)
 const limit = 12
 const pokemonList = ref([])
 const renderPokemons = computed(() => pokemonList.value.slice(0, offset.value + limit))
+const selectpokemon = ref(null);
 
 const fetchPokemon = async () => {
     const data = await fetchAPI("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=898")
@@ -48,14 +51,20 @@ const search = (event) => {
 }
 
 
+const handelPokemon = (pokemon) => {
+    selectpokemon.value = pokemon
+}
 
+const closeDetail = () => {
+    selectpokemon.value = null
+}
 
 onMounted(() => {
     fetchPokemon()
 })
 
-
-
+//design pattter
+//js reactivity
 
 
 </script>
@@ -67,26 +76,34 @@ onMounted(() => {
 
         <div id="app">
             <div class="container">
-                <div class="wrapper header-wrap">
-                    <div class="heading">
-                        <h2>Pokemon API</h2>
-                    </div>
-                    <div class="search__wrap">
-                        <input class="search" type="text" placeholder="Search some Pokemon..." @input="search">
-                    </div>
-                </div>
 
-                <div class="wrapper pokemon-container">
-                    <PokemonCard v-for="(pokemon, index) in renderPokemons" 
-                    :key="index" 
-                    :pokemon="pokemon"/>
-                </div>
+                <pokemonDetail v-if="selectpokemon" :pokemon="selectpokemon" @close="closeDetail" />
 
-                <div class="wrapper">
-                    <div class="col-full">
-                        <button v-show="pokemonList.length>limit" class="btn" @click="loadMore">Load More</button>
+                <template v-else>
+
+
+                    <div class="wrapper header-wrap">
+                        <div class="heading">
+                            <h2>Pokemon API</h2>
+                        </div>
+                        <div class="search__wrap">
+                            <input class="search" type="text" placeholder="Search some Pokemon..." @input="search">
+                        </div>
                     </div>
-                </div>
+
+                    <div class="wrapper pokemon-container">
+                        <PokemonCard v-for="(pokemon, index) in renderPokemons" :key="index" :pokemon="pokemon"
+                            @selectpokemon="handelPokemon(pokemon)" />
+                    </div>
+
+                    <div class="wrapper">
+                        <div class="col-full">
+                            <button v-show="pokemonList.length > limit" class="btn" @click="loadMore">Load More</button>
+                        </div>
+                    </div>
+
+                </template>
+
             </div>
         </div>
     </div>
@@ -95,232 +112,4 @@ onMounted(() => {
 <style scoped>
 /* base */
 
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-    margin: 0;
-    position: relative;
-    font-weight: 4000;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 50px auto;
-}
-
-.wrapper {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-.pokemon-card {
-
-    --width: 50%;
-    --offset: 10px;
-    max-width: calc(var(--width) - calc(var(--offset)));
-    flex-basis: calc(var(--width) - calc(var(--offset)));
-    text-align: center;
-    margin: 0 calc(var(--offset) / 2);
-    margin-bottom: var(--offset);
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: #0000001a 0 4px 12px;
-    transition: all .25s cubic-bezier(.02, .01, .47, 1);
-    transform: translateZ(0);
-    cursor: pointer;
-
-}
-
-.pokemon-card:hover {
-    box-shadow: 0 5px 11px rgba(0, 0, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.1),
-        -5px 0 10px rgba(0, 0, 0, 0.1), 5px 0 10px rgba(0, 0, 0, 0.1);
-
-}
-
-@media (min-width: 768px) {
-    .pokemon-card {
-        --width: 33.33%;
-        --offset: 10px;
-    }
-}
-
-
-@media (min-width: 960px) {
-    .pokemon-card {
-        --width: 25%;
-        --offset: 10px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .pokemon-card {
-        --width: 16.66%;
-        --offset: 10px;
-    }
-}
-
-
-
-.header-wrap {
-    flex-direction: column;
-    align-items: center;
-}
-
-.heading {
-    font-size: 25px;
-    margin-bottom: 50px;
-}
-
-.search__wrap {
-    max-width: 500px;
-    width: 100%;
-    margin: 0 15px 50px;
-}
-
-.search {
-    width: 100%;
-    padding: 20px;
-    border: none;
-    border-radius: 30px;
-    outline: 1px solid #00000036;
-    box-shadow: #64646f33 0 7px 29px;
-    font-size: 16px;
-    transition: all .2s ease;
-}
-
-input:focus {
-    border: 1px solid black;
-    /* Màu xanh lá khi tập trung */
-    outline: none;
-    /* Xóa viền mặc định của trình duyệt */
-}
-
-.col-full {
-    display: flex;
-    padding-top: 50px;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-}
-
-.btn {
-    cursor: pointer;
-    padding: 20px 25px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #ff4d4f;
-    transition: all .25s cubic-bezier(.02, .01, .47, 1);
-    -webkit-transition: all .25s cubic-bezier(.02, .01, .47, 1);
-}
-
-.btn:hover {
-    background-color: #ff7875
-}
-
-.btn:active {
-    background-color: #d9363e
-}
-
-.img {
-    padding-top: 100%;
-    background-size: contain;
-}
-
-
-
-.type {
-    padding: 3px 4px;
-    border-radius: 5px;
-    margin: 0 3px;
-    font-size: 13px;
-    font-weight: 500;
-    text-transform: capitalize;
-    box-shadow: #0000000d 0 6px 24px, #00000014 0 0 0 1px
-}
-
-.normal {
-    background-color: #a8a77a
-}
-
-.fighting {
-    background-color: #c22e28
-}
-
-.flying {
-    background-color: #a98ff3
-}
-
-.poison {
-    background-color: #a33ea1
-}
-
-.ground {
-    background-color: #e2bf65
-}
-
-.rock {
-    background-color: #b6a136
-}
-
-.bug {
-    background-color: #a6b91a
-}
-
-.ghost {
-    background-color: #735797
-}
-
-.steel {
-    background-color: #b7b7ce
-}
-
-.fire {
-    background-color: #ff421c
-}
-
-.water {
-    background-color: #6390f0
-}
-
-.grass {
-    background-color: #78cd54
-}
-
-.electric {
-    background-color: #f7d02c
-}
-
-.psychic {
-    background-color: #f95587
-}
-
-.ice {
-    background-color: #96d9d6
-}
-
-.dragon {
-    background-color: #6f35fc
-}
-
-.dark {
-    background-color: #705746
-}
-
-.fairy {
-    background-color: #d685ad
-}
-
-.unknow {
-    background-color: #68a090
-}
-
-.shadow {
-    background-color: #735797
-}
 </style>
