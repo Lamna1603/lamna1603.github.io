@@ -1,16 +1,24 @@
 <script setup>
-defineProps({
+
+import { useRouter } from 'vue-router'
+
+const props = defineProps({
     pokemon: Object
 })
-defineEmits(
-    ['selectpokemon']
-)
+
+const router = useRouter()
+
+function viewPokemonDetail (){
+    console.log(props.pokemon)
+    sessionStorage.setItem('selectpokemon',JSON.stringify(props.pokemon))
+    router.push('/' + props.pokemon.name)
+}
 </script>
 
 <template>
 
-<div class="pokemon-card" @click="$emit('selectpokemon',pokemon)" >
-                        <p class="id"> #{{ pokemon.id }}</p>
+<div class="pokemon-card" @click="viewPokemonDetail" >
+    <p class="id"> #{{ pokemon.id }}</p>
 
                         <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`"
                             alt="imgAvt" />
